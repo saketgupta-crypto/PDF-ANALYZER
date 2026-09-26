@@ -23,8 +23,18 @@ app.get("/", (req, res) => {
 
 connectDB();
 
-const PORT = 5001;
+// const PORT = 5001;
 
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+// app.listen(PORT, () => {
+//   console.log(`Server running on http://localhost:${PORT}`);
+// });
+
+const PORT = process.env.PORT || 5001;
+
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
+  });
+}
+
+module.exports = app;
